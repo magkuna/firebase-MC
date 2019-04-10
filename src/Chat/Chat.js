@@ -12,9 +12,11 @@ moment.locale('pl')
 class Chat extends Component {
     state = {
         messages: null,
+        newMessageText: ''
     }
 
-    componentDidMount() {
+    componentDidMount(
+    ) {
         database.ref('/JFDDL7/messages')
             .on(
                 'value',
@@ -25,24 +27,40 @@ class Chat extends Component {
                 }
             )
     }
+    onNewMessageTextChange = (event) =>{
+        this.setState( {newMessageText :event.target.value})
+    }
 
     render() {
         return (
             <div>
+                <div>
+                 <input
+                 value= {this.state.newMessageText}
+                 onChange={this.onNewMessageTextChange}
+                 />
+                 <button 
+                 onClick ={this.onSendClick}
+                >
+                 </button>
+                </div>
                 {
                     this.state.messages &&
                     Object.entries(this.state.messages)
                         .map(
                             ([key, message]) => (
                                 <div key={key}
-                                >
-                                    {moment(message.date).fromNow()}
-                                    |
-                                    {message.text}
+                                ><div>
+                                        {moment(message.date).fromNow()}
+                                    </div>
+                                    <div>
+                                        {message.text}
+                                    </div>
+                                    <div>
+                                        {message.author}
+                                    </div>
                                 </div>
                             )
-
-
                         )
                 }
             </div>
