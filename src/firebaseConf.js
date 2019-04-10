@@ -1,11 +1,14 @@
 import firebase from 'firebase'
 
 var config = {
-    apiKey: 'AIzaSyBbf1maxDOBOXsNJI6CLfT5SOHDeHB5IFc',
-    authDomain: 'jfddl7-api.firebaseapp.com',
-    databaseURL: 'https://jfddl7-api.firebaseio.com',
-    projectId: 'jfddl7-api',
-    storageBucket: 'jfddl7-api.appspot.com',
-    messagingSenderId: '196050950770'
-  };
-  firebase.initializeApp(config)
+    apiKey: 'AIzaSyDDOwPtv46O8gP0f-RBsvT9nDp3yrRXxtQ',
+    authDomain: 'ad-snadbox.firebaseapp.com',
+    databaseURL: 'https://ad-snadbox.firebaseio.com',
+    projectId: 'ad-snadbox',
+    storageBucket: 'ad-snadbox.appspot.com',
+    messagingSenderId: '328854615659'
+  }
+
+  firebase.initializeApp(config);
+
+  export const database = firebase.database()
