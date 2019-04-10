@@ -27,22 +27,37 @@ class Chat extends Component {
                 }
             )
     }
-    onNewMessageTextChange = (event) =>{
-        this.setState( {newMessageText :event.target.value})
+    onNewMessageTextChange = (event) => {
+        this.setState({ newMessageText: event.target.value })
     }
-
+    onSendClick = () => {
+        const newMessage = {
+            text: this.state.newMessageText,
+            date: Date.now(),
+            author: 'Magda Kuna'
+        }
+        fetch(
+            'https://ad-snadbox.firebaseio.com/JFDDL7/messages.json',
+            {
+                method: 'POST',
+                body: JSON.stringify(newMessage)
+            }
+        ).then(response => response.json())
+      
+    }
     render() {
         return (
             <div>
                 <div>
-                 <input
-                 value= {this.state.newMessageText}
-                 onChange={this.onNewMessageTextChange}
-                 />
-                 <button 
-                 onClick ={this.onSendClick}
-                >
-                 </button>
+                    <input
+                        value={this.state.newMessageText}
+                        onChange={this.onNewMessageTextChange}
+                    />
+                    <button
+                        onClick={this.onSendClick}
+                    >
+                    Wyślij
+                    </button>
                 </div>
                 {
                     this.state.messages &&
