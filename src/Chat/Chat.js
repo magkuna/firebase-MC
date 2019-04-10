@@ -43,12 +43,12 @@ class Chat extends Component {
 
     onDeleteMessageClick = (key) => {
         fetch(
-          'https://ad-snadbox.firebaseio.com/JFDDL7/messages/' + key + '.json',
-          {
-            method: 'DELETE',
-          }
+            'https://ad-snadbox.firebaseio.com/JFDDL7/messages/' + key + '.json',
+            {
+                method: 'DELETE',
+            }
         )
-      }
+    }
     render() {
         return (
             <div>
@@ -60,31 +60,31 @@ class Chat extends Component {
                     <button
                         onClick={this.onSendClick}
                     >
-                    Wyślij
+                        Wyślij
                     </button>
                 </div>
                 {
                     this.state.messages &&
                     Object.entries(this.state.messages)
-            .map(
-              ([key, message]) => (
-                <div
-                  key={key}
-                  onClick={() => this.onDeleteMessageClick(key)}
-                >
-                  <div>
-                    <b>{message.author}</b>
-                  </div>
-                  <div>
-                    {moment(message.date).fromNow()}
-                  </div>
-                  <div>
-                    {message.text}
-                  </div>
-                </div>
-              )
-            )
-        }
+                        .map(
+                            ([key, message]) => (
+                                <div
+                                    key={key}
+                                    onClick={() => this.onDeleteMessageClick(key)}
+                                >
+                                    <div>
+                                        <b>{message.author}</b>
+                                    </div>
+                                    <div>
+                                        {moment(message.date).fromNow()}
+                                    </div>
+                                    <div>
+                                        {message.text}
+                                    </div>
+                                </div>
+                            )
+                        )
+                }
             </div>
         )
     }

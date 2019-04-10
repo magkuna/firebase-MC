@@ -1,14 +1,12 @@
 import firebase from 'firebase'
 
 var config = {
-    apiKey: 'AIzaSyDDOwPtv46O8gP0f-RBsvT9nDp3yrRXxtQ',
-    authDomain: 'ad-snadbox.firebaseapp.com',
-    databaseURL: 'https://ad-snadbox.firebaseio.com',
-    projectId: 'ad-snadbox',
-    storageBucket: 'ad-snadbox.appspot.com',
-    messagingSenderId: '328854615659'
-  }
-
-  firebase.initializeApp(config);
-
+  apiKey: "AIzaSyBSNyaxSSJHMSvlai5RQPwQ6R-44oyKjNo",
+  authDomain: "aplikacja-bevent.firebaseapp.com",
+  databaseURL: "https://aplikacja-bevent.firebaseio.com",
+  projectId: "aplikacja-bevent",
+  storageBucket: "aplikacja-bevent.appspot.com",
+  messagingSenderId: "439121374171"
+};
+firebase.initializeApp(config);
   export const database = firebase.database()
