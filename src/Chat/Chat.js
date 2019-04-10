@@ -39,8 +39,16 @@ class Chat extends Component {
             author: 'Magda Kuna'
         }
         messagesRef.push(newMessage)
-      
     }
+
+    onDeleteMessageClick = (key) => {
+        fetch(
+          'https://ad-snadbox.firebaseio.com/JFDDL7/messages/' + key + '.json',
+          {
+            method: 'DELETE',
+          }
+        )
+      }
     render() {
         return (
             <div>
@@ -58,22 +66,25 @@ class Chat extends Component {
                 {
                     this.state.messages &&
                     Object.entries(this.state.messages)
-                        .map(
-                            ([key, message]) => (
-                                <div key={key}
-                                ><div>
-                                        {moment(message.date).fromNow()}
-                                    </div>
-                                    <div>
-                                        {message.text}
-                                    </div>
-                                    <div>
-                                        {message.author}
-                                    </div>
-                                </div>
-                            )
-                        )
-                }
+            .map(
+              ([key, message]) => (
+                <div
+                  key={key}
+                  onClick={() => this.onDeleteMessageClick(key)}
+                >
+                  <div>
+                    <b>{message.author}</b>
+                  </div>
+                  <div>
+                    {moment(message.date).fromNow()}
+                  </div>
+                  <div>
+                    {message.text}
+                  </div>
+                </div>
+              )
+            )
+        }
             </div>
         )
     }
