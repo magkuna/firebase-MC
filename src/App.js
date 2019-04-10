@@ -1,18 +1,11 @@
 import React from 'react';
 
-import { database } from './firebaseConf'
 
-// const courseRef = database.ref('/JFDDL7')
-
-database.ref('/JFDDL7').once(
-  'value'
-)
-  .then(snapshot => console.log(snapshot.val()))
-
+import Chat from './Chat'
 
 const App = (props) => (
   <div>
-    App
+    <Chat />
   </div>
 )
 
