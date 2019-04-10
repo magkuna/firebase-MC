@@ -6,6 +6,8 @@ import 'moment/locale/pl'
 
 moment.locale('pl')
 
+const messagesRef = database.ref('/JFDDL7/messages')
+
 
 
 
@@ -36,13 +38,7 @@ class Chat extends Component {
             date: Date.now(),
             author: 'Magda Kuna'
         }
-        fetch(
-            'https://ad-snadbox.firebaseio.com/JFDDL7/messages.json',
-            {
-                method: 'POST',
-                body: JSON.stringify(newMessage)
-            }
-        ).then(response => response.json())
+        messagesRef.push(newMessage)
       
     }
     render() {
